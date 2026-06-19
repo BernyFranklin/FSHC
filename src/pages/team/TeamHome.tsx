@@ -8,16 +8,16 @@ export default function TeamHome() {
   ];
   return (
     <section className="space-y-4">
-      <h1 className="text-3xl font-bold">Team</h1>
+      <h1 className="text-3xl font-bold text-brand-primary">Team</h1>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {cards.map((c) => (
           <Link
             key={c.to}
             to={c.to}
-            className="rounded-lg bg-white shadow p-4 hover:shadow-md transition"
+            className="rounded-lg bg-brand-white shadow border-t-4 border-brand-secondary p-4 hover:shadow-md transition"
           >
-            <h2 className="font-semibold">{c.title}</h2>
-            <p className="text-sm text-slate-600">{c.desc}</p>
+            <h2 className="font-semibold text-brand-primary">{c.title}</h2>
+            <p className="text-sm text-brand-primary/70">{c.desc}</p>
           </Link>
         ))}
       </div>

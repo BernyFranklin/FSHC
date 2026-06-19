@@ -13,21 +13,21 @@ export default function Login() {
   }
 
   return (
-    <section className="max-w-md mx-auto bg-white rounded-lg shadow p-6 space-y-4">
-      <h1 className="text-2xl font-bold">Log in</h1>
-      <p className="text-sm text-slate-600">
+    <section className="max-w-md mx-auto bg-brand-white rounded-lg shadow p-6 space-y-4">
+      <h1 className="text-2xl font-bold text-brand-primary">Log in</h1>
+      <p className="text-sm text-brand-primary/70">
         Stub auth — pick a role to continue.
       </p>
       <div className="flex gap-3">
         <button
           onClick={() => pick("player")}
-          className="flex-1 rounded-md bg-slate-800 text-white py-2 hover:bg-slate-700"
+          className="flex-1 rounded-md bg-brand-primary text-brand-white py-2 hover:bg-brand-primary/90"
         >
           Player
         </button>
         <button
           onClick={() => pick("board")}
-          className="flex-1 rounded-md bg-emerald-700 text-white py-2 hover:bg-emerald-600"
+          className="flex-1 rounded-md bg-brand-secondary text-brand-white py-2 hover:bg-brand-secondary/90"
         >
           Board
         </button>

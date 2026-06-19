@@ -6,11 +6,13 @@ export default function Navbar() {
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     `px-3 py-2 rounded-md text-sm font-medium ${
-      isActive ? "bg-slate-900 text-white" : "text-slate-200 hover:bg-slate-700"
+      isActive
+        ? "bg-brand-secondary text-brand-white"
+        : "text-brand-tertiary hover:bg-brand-secondary/80 hover:text-brand-white"
     }`;
 
   return (
-    <nav className="bg-slate-800 text-white">
+    <nav className="bg-brand-primary text-brand-white">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
         <Link to="/" className="text-lg font-bold tracking-wide">
           FSHC
@@ -32,7 +34,7 @@ export default function Navbar() {
           {role ? (
             <button
               onClick={logout}
-              className="ml-2 px-3 py-2 rounded-md text-sm bg-slate-700 hover:bg-slate-600"
+              className="ml-2 px-3 py-2 rounded-md text-sm bg-brand-secondary text-brand-white hover:bg-brand-secondary/90"
             >
               Log out ({role})
             </button>
