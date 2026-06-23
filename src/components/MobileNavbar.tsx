@@ -1,8 +1,23 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+const NAV_LINKS = [
+  "Home",
+  "News",
+  "Team",
+  "Tickets",
+  "Schedule",
+  "Sponsors",
+] as const;
+
 export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
+
+  // Placeholder handler until real routes/actions are wired in.
+  const handleNavClick = (label: string) => {
+    console.log(`Mobile nav clicked: ${label}`);
+    setOpen(false);
+  };
 
   return (
     <nav className="bg-brand-primary text-brand-white md:hidden">
@@ -34,6 +49,36 @@ export default function MobileNavbar() {
             }`}
           />
         </button>
+      </div>
+
+      {/* Slide-down menu panel */}
+      <div
+        className={`overflow-hidden bg-brand-primaryLight transition-all duration-300 ease-in-out ${
+          open ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col px-4 py-2">
+          {NAV_LINKS.map((label) => (
+            <li key={label}>
+              <button
+                type="button"
+                onClick={() => handleNavClick(label)}
+                className="w-full rounded-md px-2 py-3 text-center text-base font-medium text-brand-tertiary transition-colors hover:bg-brand-secondary/80 hover:text-brand-white"
+              >
+                {label}
+              </button>
+            </li>
+          ))}
+          <li className="pt-2 pb-1">
+            <button
+              type="button"
+              onClick={() => handleNavClick("Join the Booster Club!")}
+              className="w-full rounded-md bg-brand-secondary px-2 py-3 text-center text-base font-bold text-brand-white transition-colors hover:bg-brand-secondary/90"
+            >
+              Join the Booster Club!
+            </button>
+          </li>
+        </ul>
       </div>
     </nav>
   );
