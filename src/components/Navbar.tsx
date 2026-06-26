@@ -1,48 +1,41 @@
-import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../auth/AuthContext";
+import { NAV_LINKS, BOOSTER_CTA } from "./navLinks";
 
 export default function Navbar() {
-  const { role, logout } = useAuth();
-
-  const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `px-3 py-2 rounded-md text-sm font-medium ${
-      isActive
-        ? "bg-brand-secondary text-brand-white"
-        : "text-brand-tertiary hover:bg-brand-secondary/80 hover:text-brand-white"
-    }`;
+  // Placeholder handler until real routes/actions are wired in.
+  const handleNavClick = (label: string) => {
+    console.log(`Mobile nav clicked: ${label}`);
+  };
 
   return (
-    <nav className="hidden bg-brand-primary text-brand-white md:block">
-      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="text-lg font-bold tracking-wide">
-          FSHC
-        </Link>
+    <nav className="hidden bg-brand-primary text-brand-white lg:block">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        {/* Left: placeholder logo square + league line */}
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 shrink-0 rounded bg-brand-tertiary" />
+          <span className="whitespace-nowrap text-base font-bold tracking-wide text-brand-white">
+            ACHA Men's Division 3 Independent
+          </span>
+        </div>
+
+        {/* Right: nav links + Booster Club CTA */}
         <div className="flex items-center gap-2">
-          <NavLink to="/" end className={linkClass}>
-            Home
-          </NavLink>
-          {(role === "player" || role === "board") && (
-            <NavLink to="/team" className={linkClass}>
-              Team
-            </NavLink>
-          )}
-          {role === "board" && (
-            <NavLink to="/management" className={linkClass}>
-              Management
-            </NavLink>
-          )}
-          {role ? (
+          {NAV_LINKS.map((label) => (
             <button
-              onClick={logout}
-              className="ml-2 px-3 py-2 rounded-md text-sm bg-brand-secondary text-brand-white hover:bg-brand-secondary/90"
+              key={label}
+              type="button"
+              onClick={() => handleNavClick(label)}
+              className="rounded-md px-3 py-2 text-sm font-medium text-brand-tertiary transition-colors hover:bg-brand-secondary/80 hover:text-brand-white"
             >
-              Log out ({role})
+              {label}
             </button>
-          ) : (
-            <NavLink to="/login" className={linkClass}>
-              Log in
-            </NavLink>
-          )}
+          ))}
+          <button
+            type="button"
+            onClick={() => handleNavClick(BOOSTER_CTA)}
+            className="whitespace-nowrap rounded-md bg-brand-secondary px-3 py-2 text-sm font-bold text-brand-white transition-colors hover:bg-brand-secondary/90"
+          >
+            {BOOSTER_CTA}
+          </button>
         </div>
       </div>
     </nav>

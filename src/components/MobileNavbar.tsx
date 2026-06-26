@@ -1,14 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-
-const NAV_LINKS = [
-  "Home",
-  "News",
-  "Team",
-  "Tickets",
-  "Schedule",
-  "Sponsors",
-] as const;
+import { NAV_LINKS, BOOSTER_CTA } from "./navLinks";
 
 export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
@@ -20,7 +12,7 @@ export default function MobileNavbar() {
   };
 
   return (
-    <nav className="bg-brand-primary text-brand-white md:hidden">
+    <nav className="bg-brand-primary text-brand-white lg:hidden">
       <div className="flex items-center justify-between px-4 py-3">
         {/* Left: placeholder logo square + club name */}
         <div className="flex items-center gap-3">
@@ -72,10 +64,10 @@ export default function MobileNavbar() {
           <li className="pt-2 pb-1">
             <button
               type="button"
-              onClick={() => handleNavClick("Join the Booster Club!")}
+              onClick={() => handleNavClick(BOOSTER_CTA)}
               className="w-full rounded-md bg-brand-secondary px-2 py-3 text-center text-base font-bold text-brand-white transition-colors hover:bg-brand-secondary/90"
             >
-              Join the Booster Club!
+              {BOOSTER_CTA}
             </button>
           </li>
         </ul>
